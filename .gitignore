@@ -1,0 +1,18 @@
+.idea
+*.pt
+*.json
+*.zip
+*.whl
+# *.png
+__pycache__
+
+wandb/
+logs/
+log/
+state/exp*
+results/
+state/InContext*
+*.log
+*.sh
+
+
