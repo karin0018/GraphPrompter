@@ -1,5 +1,5 @@
 DEVICE=$1
-DATA_ROOT=/data/lvrui/graph-prompt/prodigy-main/data/
+DATA_ROOT=./data/
 LOGPATH=./logs
 PATH_TO_CHECKPOINT=./state/Wiki_PT_GraphPrompter/state_dict
 SHOTS=10 # where SHOTS means the size of candidate prompt set

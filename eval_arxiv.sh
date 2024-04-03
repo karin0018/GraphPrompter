@@ -1,5 +1,5 @@
 DEVICE=$1
-DATA_ROOT=/data/lvrui/graph-prompt/prodigy-main/data/
+DATA_ROOT=./data/
 LOGPATH=./logs
 PATH_TO_CHECKPOINT=./state/MAG_GraphPrompter/state_dict
 # ways=5
