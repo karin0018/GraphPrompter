@@ -13,6 +13,6 @@ state/exp*
 results/
 state/InContext*
 *.log
-*.sh
+# *.sh
 
 
