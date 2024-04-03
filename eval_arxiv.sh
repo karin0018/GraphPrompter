@@ -1,7 +1,7 @@
 DEVICE=$1
 DATA_ROOT=./data/
 LOGPATH=./logs
-PATH_TO_CHECKPOINT=./state/MAG_GraphPrompter/state_dict
+PATH_TO_CHECKPOINT=./state/MAG_PT_GraphPrompter/state_dict
 # ways=5
 shots=10
 temp=3
