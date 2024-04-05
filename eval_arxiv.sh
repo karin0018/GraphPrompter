@@ -1,5 +1,5 @@
 DEVICE=$1
-DATA_ROOT=./data/
+DATA_ROOT=$2
 LOGPATH=./logs
 PATH_TO_CHECKPOINT=./state/MAG_PT_GraphPrompter/state_dict
 # ways=5
@@ -29,7 +29,6 @@ python experiments/run_single_experiment.py --dataset arxiv --root $DATA_ROOT  -
 grep -E '^round|^wandb:     start_test_acc|^wandb: start_test_acc_std' $LOGPATH/eval_arxiv_t${temp}w${ways}_knn.log   >> $LOGFILE
 
 echo "----- knn cache-----" >> $LOGFILE
-# use knn & edge_sampler
 python experiments/run_single_experiment.py --dataset arxiv --root $DATA_ROOT  -ds_cap 510 -val_cap 510 -test_cap 500 -eval_step 100 -epochs 1 --layers S2,U,M -way $ways -shot $shots --temp $temp -bs 1  -qry 3 -lr 1e-5 -bert roberta-base-nli-stsb-mean-tokens -pretrained $PATH_TO_CHECKPOINT --eval_only True --train_cap 10 --seed 10 --knn --cache --eval --emb_dim 256 --device $DEVICE --input_dim 768 2>&1 | tee $LOGPATH/eval_arxiv_t${temp}w${ways}_knn_es.log
 
 grep -E '^round|^wandb:     start_test_acc|^wandb: start_test_acc_std' $LOGPATH/eval_arxiv_t${temp}w${ways}_knn_es.log   >> $LOGFILE

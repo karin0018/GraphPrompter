@@ -2,6 +2,7 @@ import torch
 import numpy as np
 from torch.utils.data import Dataset
 from torch_geometric.data import Data
+import random
 
 class SubgraphDataset(Dataset):
     def __init__(self, graph, neighbor_sampler, offset=0, bidirectional=True, node_graph = False):
@@ -177,6 +178,13 @@ class KGSubgraphDataset(Dataset):
         # remove the direct edge
         edge_index = edge_index[:, edge_id != edge_idx]
         edge_id = edge_id[edge_id != edge_idx]
+
+        # reconstructure edge_index
+        edge_list = [i for i in range(edge_index.size(1))]
+        selected_number = int(edge_index.size(1) * 0.5)
+        se = random.sample(edge_list, selected_number)
+        edge_index = edge_index[:, se]
+        edge_id = edge_id[se]
 
         data = {}
         data['center_node_idx'] = e
