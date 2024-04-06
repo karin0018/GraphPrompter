@@ -29,20 +29,10 @@ python experiments/run_single_experiment.py --dataset arxiv --root $DATA_ROOT  -
 grep -E '^round|^wandb:     start_test_acc|^wandb: start_test_acc_std' $LOGPATH/eval_arxiv_t${temp}w${ways}_knn.log   >> $LOGFILE
 
 echo "----- knn cache-----" >> $LOGFILE
-python experiments/run_single_experiment.py --dataset arxiv --root $DATA_ROOT  -ds_cap 510 -val_cap 510 -test_cap 500 -eval_step 100 -epochs 1 --layers S2,U,M -way $ways -shot $shots --temp $temp -bs 1  -qry 3 -lr 1e-5 -bert roberta-base-nli-stsb-mean-tokens -pretrained $PATH_TO_CHECKPOINT --eval_only True --train_cap 10 --seed 10 --knn --cache --eval --emb_dim 256 --device $DEVICE --input_dim 768 2>&1 | tee $LOGPATH/eval_arxiv_t${temp}w${ways}_knn_es.log
+python experiments/run_single_experiment.py --dataset arxiv --root $DATA_ROOT  -ds_cap 510 -val_cap 510 -test_cap 500 -eval_step 100 -epochs 1 --layers S2,U,M -way $ways -shot $shots --temp $temp -bs 1  -qry 3 -lr 1e-5 -bert roberta-base-nli-stsb-mean-tokens -pretrained $PATH_TO_CHECKPOINT --eval_only True --train_cap 10 --seed 10 --knn --cache --eval --emb_dim 256 --device $DEVICE --input_dim 768 2>&1 | tee $LOGPATH/eval_arxiv_t${temp}w${ways}_knn_uc.log
 
-grep -E '^round|^wandb:     start_test_acc|^wandb: start_test_acc_std' $LOGPATH/eval_arxiv_t${temp}w${ways}_knn_es.log   >> $LOGFILE
+grep -E '^round|^wandb:     start_test_acc|^wandb: start_test_acc_std' $LOGPATH/eval_arxiv_t${temp}w${ways}_knn_uc.log   >> $LOGFILE
 
 
 done
-
-
-# # use knn shot=10 temp=3 means choice 3 prompts form 10 candidates
-# python experiments/run_single_experiment.py --dataset arxiv --root $DATA_ROOT  -ds_cap 510 -val_cap 510 -test_cap 500 -eval_step 100 -epochs 1 --layers S2,U,M -way $ways -shot $shots --temp $temp -bs 1  -qry 3 -lr 1e-5 -bert roberta-base-nli-stsb-mean-tokens -pretrained $PATH_TO_CHECKPOINT --eval_only True --train_cap 10 --seed 10 --knn --eval --emb_dim 256 --device $DEVICE --input_dim 768 2>&1 | tee $LOGPATH/eval_arxiv_t${temp}w${ways}_knn.log
-
-# # use edge_sampler
-# python experiments/run_single_experiment.py --dataset arxiv --root $DATA_ROOT  -ds_cap 510 -val_cap 510 -test_cap 500 -eval_step 100 -epochs 1 --layers S2,U,M -way $ways -shot $shots --temp $temp -bs 1  -qry 3 -lr 1e-5 -bert roberta-base-nli-stsb-mean-tokens -pretrained $PATH_TO_CHECKPOINT --eval_only True --train_cap 10 --seed 10 --edge_sampler --edge_sampler_type degree --eval --emb_dim 256 --device $DEVICE --input_dim 768 2>&1 | tee $LOGPATH/eval_arxiv_t${temp}w${ways}_es.log
-
-# use knn & edge_sampler
-# python experiments/run_single_experiment.py --dataset arxiv --root $DATA_ROOT  -ds_cap 510 -val_cap 510 -test_cap 500 -eval_step 100 -epochs 1 --layers S2,U,M -way $ways -shot $shots --temp $temp -bs 1  -qry 3 -lr 1e-5 -bert roberta-base-nli-stsb-mean-tokens -pretrained $PATH_TO_CHECKPOINT --eval_only True --train_cap 10 --seed 10 --knn --edge_sampler --edge_sampler_type degree --eval --emb_dim 256 --device $DEVICE --input_dim 768 2>&1 | tee $LOGPATH/eval_arxiv_t${temp}w${ways}_knn_es_maskedge.log
 
