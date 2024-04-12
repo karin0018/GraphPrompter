@@ -69,10 +69,13 @@ As we can see in Fig3, when the number of prompts is very small (=3), the distri
 From Fig4, we can see that with the same number of prompts, e.g.`shots=20`, our GraphPrompter get the clear classification results than the baseline PRODIGY. However, based on the exsisting Graph In-Context Learning framework, our method still suffer from the problem of too many prompts, though, it is still better than baseline.
 
 
-**The limitation of the exsisting Graph In-Context Learning framework is:**
-As we introduce in Fig1, this framework can be divided in two part, Data graphs and Task graphs, both of them are pre-training with large datasets and fixed weights during downstream test stage. When we increasing the prompts number, the nodes of Task graphs will be increase, accroding to the limitation of model's memory, the predict performance is decreasing. 
+**The analysis about the limitation of exsisting Graph In-Context Learning framework.**
 
-Modifying the structure of the Task graph is a possible solution, such as expanding the capacity of the graph model or switching to another clustering method. We will continue to explore them in future work.
+As we introduce in Fig1, this framework can be divided in two part, Data graphs and Task graphs, both of them are pre-training with large datasets and fixed weights during downstream test stage. While this pre-trained model can obtain impressive adaptive ability, there still have the limitation to represent test dataset distribution.
+
+According to the distribution of the pre-training dataset and test dataset are very different, when the number of prompts is too large, it is difficult for the pre-trained task graph to aggregate them, and thus the classification performance of the model deteriorates. 
+
+Modifying the structure of the Task graph is a possible solution, such as expanding the capacity of the graph model or using another clustering method. We will continue to explore them in future work.
 
 **Finally, even there have some limitaiosn in our method, the performance of our GraphPrompter obtain SOTA in most few-shots experiments, and we believe our work is provide a novel insights of Graph In-Context Learning.**
 
@@ -92,3 +95,8 @@ If you use this repo, please cite the following paper. This repo reuses code fro
 ```
 
 article(Under review):  Empowering Graph In-Context Learning with Adaptive Prompt Optimization
+
+# References
+[1] Urvashi K, et al. Generalization through Memorization: Nearest Neighbor Language Models. (ICLR 2020)
+[2] Benfeng X, et al. kNN Prompting: Beyond-Context Learning with Calibration-Free Nearest Neighbor Inference. (ICLR 2023)
+[3] Xianchao W,  et al. Retrieval meets Long Context Large Language Models. (ICLR 2024)
