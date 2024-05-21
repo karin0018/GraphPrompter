@@ -34,14 +34,4 @@ evaluation on ConcepNet/FB15K-237/NELL: `eval_all_kg.sh`
 
 If you use this repo, please cite the following paper. This repo reuses code from [CSR](https://github.com/snap-stanford/csr) for KG datasets loading.
 
-```
-@article{Huang2023PRODIGYEI,
-  title={PRODIGY: Enabling In-context Learning Over Graphs},
-  author={Qian Huang and Hongyu Ren and Peng Chen and Gregor Kr\v{z}manc and Daniel Zeng and Percy Liang and Jure Leskovec},
-  journal={ArXiv},
-  year={2023},
-  volume={abs/2305.12600}
-}
-```
-
 article(Under review):  Empowering Graph In-Context Learning with Adaptive Prompt Optimization
