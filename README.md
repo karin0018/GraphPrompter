@@ -1,4 +1,4 @@
-# GraphPrompter: Empowering Graph In-Context Learning with Adaptive Prompt Optimization
+# GraphPrompter: Multi-stage Adaptive Prompt Optimization for Graph In-Context Learning
 
 A multi-stage adaptive graph prompt selection algotithm to enhance the in-context learning over graphs.
 
@@ -34,4 +34,4 @@ evaluation on ConcepNet/FB15K-237/NELL: `eval_all_kg.sh`
 
 If you use this repo, please cite the following paper. This repo reuses code from [CSR](https://github.com/snap-stanford/csr) for KG datasets loading.
 
-article(Under review):  Empowering Graph In-Context Learning with Adaptive Prompt Optimization
+article(Under review):  GraphPrompter: Multi-stage Adaptive Prompt Optimization for Graph In-Context Learning
